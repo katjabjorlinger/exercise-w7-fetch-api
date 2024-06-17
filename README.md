@@ -7,7 +7,7 @@
 # Fetch API
 
 For this week's team session, you will practice fetching data from an open Pokemon API.
-The goal is to change the content of our mystery table in HTML to contain info about one specific Pokemon. This will be done during the scheduled team session, you decide in the team if you do it in small groups or pairs.
+The goal is to change the content of our mystery table in HTML to contain info about one specific Pokemon.
 
 
 ### Instructions:
