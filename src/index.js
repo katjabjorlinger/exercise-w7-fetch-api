@@ -21,14 +21,32 @@ const types = document.getElementById("types");
 
 const fetchPokemons = () => {
   /*Fetch all pokemons here*/
+  fetch("https://pokeapi.co/api/v2/pokemon?limit=50")
+  .then(response => response.json())
+  .then(data => {
+    data.results.forEach(pokemon => {
+      console.log(pokemon.name)
+    });
+  })
 };
 
+fetchPokemons();
 // 2) a) As you can see, we get some metadata as well as
 //    the results of the fetch. Change the console.log so
 //    that you only log the array of pokemon objects.
 
 //    b) Log only the name of the first pokemon in the
 //    pokemon objects array
+
+/* const fetchPokemons = () => {
+  fetch("https://pokeapi.co/api/v2/pokemon?limit=50")
+    .then(response => response.json())
+    .then(data => {
+      console.log(data.results[0].name); 
+    });
+};
+
+fetchPokemons(); */
 
 //    c) Log the names of all pokemons in the array
 
@@ -45,10 +63,28 @@ const fetchPokemons = () => {
 //    function (change the function's name to fit your pokemon).
 //    Log the data in the console and see what you find.
 
-const fetchBulbasaurData = () => {
+const fetchSnorlaxData = () => {
   /*Fetch singular pokemon here*/
+
+  fetch("https://pokeapi.co/api/v2/pokemon/143/")
+  .then(response => response.json())
+  /* .then(data => console.log(data)) */
+  .then(data => {
+    const image = document.getElementById("image");
+    image.src = data.sprites.front_default;
+
+    document.getElementById("name").innerHTML = data.name;
+
+    document.getElementById("weight").innerHTML = data.weight;
+
+    document.getElementById("height").innerHTML = data.height;
+
+    const types = data.types.map(typeInfo => typeInfo.type.name).join(", ");
+      document.getElementById("types").innerHTML = types;
+  });
 };
 
+fetchSnorlaxData ();
 // 5) After familiarizing with the data, we will use the data
 //    to change our table. We will give you the image as a start.
 //    If you named the data something else than json, you change the
